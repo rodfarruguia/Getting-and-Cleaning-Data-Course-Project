@@ -42,13 +42,13 @@ names(xboundtrainandtest) <-
     gsub("\\(|\\)", "", names(xboundtrainandtest))
 names(xboundtrainandtest) <- tolower(names(xboundtrainandtest))
 
-## read and add names to dataset. for part 3
+## read and add names to dataset. for part 3, 4
 activitylabels[, 2] = gsub("_", "", tolower(as.character(activitylabels[, 2])))
 yboundtrainandtest[, 1] = activitylabels[yboundtrainandtest[, 1], 2]
 names(yboundtrainandtest) <- "activity"
 names(subjectboundtrainandtest) <- "subject"
 
-##collect the data to print to tidyData for part 1, and  4
+##collect the data to print to tidyData for part 1
 tidyData <-
     cbind(subjectboundtrainandtest,
           yboundtrainandtest,
