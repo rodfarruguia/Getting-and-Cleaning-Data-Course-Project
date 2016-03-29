@@ -53,12 +53,13 @@ Variables
 
  Activity Labels
 
-* "WALKING"  1 
-* "WALKING_UPSTAIRS" 2
-* "WALKING_DOWNSTAIRS" 3
-* "SITTING" 4
-* "STANDING` 5
-* "LAYING" 6
+* "walking"  1 
+* "walkingupstairs" 2
+* "walingdownstairs" 3
+* "sitting" 4
+* "standing" 5
+* "laying" 6
+
 Output
 tidyData.txt
 
