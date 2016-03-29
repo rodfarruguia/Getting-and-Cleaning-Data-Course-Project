@@ -10,7 +10,7 @@ if (!file.exists("./UCI HAR Dataset")) {
     rm(temporary)
 }
 
-##Reads a file in table format and creates a data frame from it, with cases corresponding to lines and variables to fields in the file.
+##Reads a file in table format and creates a data frame from it, with cases corresponding to lines and variables to fields in the file. part 1
 ytrain <- read.table("./UCI HAR Dataset/train/y_train.txt")
 ytest <- read.table("./UCI HAR Dataset/test/y_test.txt")
 xtrain <- read.table("./UCI HAR Dataset/train/X_train.txt")
@@ -22,7 +22,7 @@ activitylabels <-
 subjecttrain <-
     read.table("./UCI HAR Dataset/train/subject_train.txt")
 subjecttest <- read.table("./UCI HAR Dataset/test/subject_test.txt")
-## row combining the data.
+## row combining the data.for part 1
 xboundtrainandtest <- rbind(xtest, xtrain)
 subjectboundtrainandtest <- rbind(subjecttest, subjecttrain)
 yboundtrainandtest <- rbind(ytest, ytrain)
@@ -30,10 +30,10 @@ yboundtrainandtest <- rbind(ytest, ytrain)
 ## removes object from enviroment
 rm(subjecttest, subjecttrain, xtrain, ytrain, xtest, ytest)
 
-## only the names from the features.txt
+## only get the names from the features.txt for part 4
 featuresfiltered <- features$V2
 
-## filtering out the colums for std and mean.
+## filtering out the colums for std and mean. for part 2 
 datameanandstd <-
     grepl("(std|mean[^F])", featuresfiltered, perl = TRUE)
 xboundtrainandtest <- xboundtrainandtest[, datameanandstd]
@@ -42,18 +42,19 @@ names(xboundtrainandtest) <-
     gsub("\\(|\\)", "", names(xboundtrainandtest))
 names(xboundtrainandtest) <- tolower(names(xboundtrainandtest))
 
-## read and add names to dataset.
+## read and add names to dataset. for part 3
 activitylabels[, 2] = gsub("_", "", tolower(as.character(activitylabels[, 2])))
 yboundtrainandtest[, 1] = activitylabels[yboundtrainandtest[, 1], 2]
 names(yboundtrainandtest) <- "activity"
 names(subjectboundtrainandtest) <- "subject"
 
-##collect the data to print to tidyData for part 4
+##collect the data to print to tidyData for part 1, and  4
 tidyData <-
     cbind(subjectboundtrainandtest,
           yboundtrainandtest,
           xboundtrainandtest)
 write.table(tidyData, "tidyDataPart4.txt")
+
 
 ## including only data to generate mean and std, print out tidydata for part 5
 part5data <-
