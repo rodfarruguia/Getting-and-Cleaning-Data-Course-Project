@@ -12,6 +12,9 @@ http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartpho
 Process
 
 The script run_analysis.R performs the following process to clean up the data and create tiny data sets:
+    Checks to see if the data files are in the working directory.
+    
+    Downloads data files if they are missing from the url provided.
 
     Merge the train and test sets to create one data set.
 
